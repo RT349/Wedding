@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeddingRuth&Marvin</title>
+    <style>
+        body {
+            background-color: #E9F4FF;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: relative; /* Added relative positioning */
+        }
+
+        video {
+            max-width: 100%;
+            height: auto;
+        }
+
+        button {
+            background-color: #2B4976;
+            color: #C39846;
+            padding: 10px 20px;
+            font-size: 44px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            position: absolute;
+            top: 155%; /* Adjust the top position */
+            left: 50%; /* Center the button horizontally */
+            transform: translateX(-50%); /* Center the button horizontally */
+            width: 60%;
+        }
+
+        .elementor-countdown-wrapper {
+            max-width: 105%;
+            display: flex;
+            justify-content: center;
+            margin-right: auto;
+            margin-left: auto;
+            flex-direction: row;
+            position: absolute;
+            top: 145%; /* Adjust the top position */
+            left: 50%; /* Center the countdown horizontally */
+            transform: translate(-50%, -50%); /* Center the countdown horizontally and vertically */
+            
+        }
+
+        .elementor-countdown-item {
+            text-align: center;
+            margin: 0 10px;
+            border-radius: 50%;
+            color: #2B4976;
+            /* צבע טקסט בעיגול */
+            padding: 10px;
+            /* רווח בין טקסט למסגרת */
+        }
+
+        .elementor-countdown-digits {
+            font-size: 56px;
+            font-weight: bold;
+        }
+
+        .elementor-countdown-label {
+            display: block;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <video autoplay muted>
+        <source src="M222.mp4" type="video/mp4">
+    </video>
+
+    <button onclick="window.location.href='wedding2.html'">Voir L'invitation </button>
+    <div class="elementor-countdown-wrapper" data-date="1703286000">
+        <!-- תאריך התחלה - timestamp של היום הנוכחי -->
+        <div class="elementor-countdown-item"><span class="elementor-countdown-digits elementor-countdown-days">00</span> <span class="elementor-countdown-label">Jours</span></div>
+        <div class="elementor-countdown-item"><span class="elementor-countdown-digits elementor-countdown-hours">00</span> <span class="elementor-countdown-label">Heures</span></div>
+        <div class="elementor-countdown-item"><span class="elementor-countdown-digits elementor-countdown-minutes">00</span> <span class="elementor-countdown-label">Minutes</span></div>
+        <div class="elementor-countdown-item"><span class="elementor-countdown-digits elementor-countdown-seconds">00</span> <span class="elementor-countdown-label">Secondes</span></div>
+    </div>
+
+    <script>
+        const targetDate = new Date('February 20, 2024').getTime();
+
+        function updateCountdown() {
+            const currentDate = new Date().getTime();
+            const difference = targetDate - currentDate;
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.querySelectorAll('.elementor-countdown-digits')[0].innerText = days;
+            document.querySelectorAll('.elementor-countdown-digits')[1].innerText = hours;
+            document.querySelectorAll('.elementor-countdown-digits')[2].innerText = minutes;
+            document.querySelectorAll('.elementor-countdown-digits')[3].innerText = seconds;
+        }
+
+        setInterval(updateCountdown, 1000);
+    </script>
+
+</body>
+
+</html>
